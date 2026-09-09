@@ -44,4 +44,19 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 */
 /** @var object $router **/
 
-$router->get('/', 'Welcome::index');
+$router->get('/', 'AuthController::login');
+
+//AUTH ROUTES
+$router->get('/auth/login', 'AuthController::login');
+$router->post('/auth/login', 'AuthController::login');
+$router->get('/auth/register', 'AuthController::register');
+$router->post('/auth/register', 'AuthController::register');
+$router->get('/auth/logout', 'AuthController::logout');
+
+//PRODUCT ROUTE (PROTECTED)
+$router->get('/products', 'ProductController::index');
+$router->get('/products/create', 'ProductController::create');
+$router->post('/products/create', 'ProductController::create');
+$router->get('/products/edit/{id}', 'ProductController::edit');
+$router->post('/products/edit/{id}', 'ProductController::edit');
+$router->get('/products/delete/{id}', 'ProductController::delete');
